@@ -7,7 +7,7 @@ body
     font-family: 'Roboto', sans-serif
 
 .container
-    width: 1000px
+    max-width: 1000px
     min-height: 400px
     margin: 0 auto
     background-color: #e3e3e3
@@ -45,6 +45,10 @@ header
                 border-radius: 3px
                 &:last-child
                     margin-right: 0
+
+
+
+
 
 .form__task
     padding: 20px
@@ -86,3 +90,17 @@ input
     height: 33px
     margin-right: 10px
 
+@media screen and (max-width: 630px)
+    .name__task
+        max-width: 400px
+
+
+@media screen and (max-width: 532px)
+    .name__task
+        max-width: 300px
+
+    
+    
+@media screen and (max-width: 432px)
+    .name__task
+        max-width: 200px
