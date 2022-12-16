@@ -1,0 +1,100 @@
+*,
+::after,
+::before {
+  margin: 0; }
+
+body {
+  font-family: 'Roboto', sans-serif; }
+
+.container {
+  width: 1000px;
+  min-height: 400px;
+  margin: 0 auto;
+  background-color: #e3e3e3; }
+
+header h1 {
+  text-align: center;
+  padding: 30px 30px 10px 30px; }
+
+header img {
+  display: block;
+  width: 80px;
+  height: auto;
+  margin: 0 auto;
+  padding-bottom: 20px; }
+
+.task__list ul {
+  padding: 0;
+  margin: 20px; }
+  .task__list ul li {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: justify;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    list-style: none;
+    font-size: 18px;
+    padding: 5px;
+    border-bottom: 1px solid #000;
+    margin-bottom: 10px; }
+    .task__list ul li img {
+      width: 31px;
+      height: 31px;
+      margin-right: 7px;
+      cursor: pointer;
+      border: 1px solid #000;
+      border-radius: 3px; }
+      .task__list ul li img:last-child {
+        margin-right: 0; }
+
+.form__task {
+  padding: 20px; }
+  .form__task h3 {
+    text-align: center;
+    padding: 10px;
+    font-size: 22px; }
+  .form__task input {
+    display: block;
+    width: 90%;
+    height: 50px;
+    margin: 0 auto;
+    padding-left: 20px;
+    border-radius: 5px;
+    border: none;
+    outline: none;
+    background-color: #cececeaf;
+    font-size: 18px; }
+    .form__task input::-webkit-input-placeholder {
+      font-size: 18px;
+      font-style: italic; }
+    .form__task input:-ms-input-placeholder {
+      font-size: 18px;
+      font-style: italic; }
+    .form__task input::-ms-input-placeholder {
+      font-size: 18px;
+      font-style: italic; }
+    .form__task input::placeholder {
+      font-size: 18px;
+      font-style: italic; }
+  .form__task button {
+    display: block;
+    border: none;
+    width: 150px;
+    height: 50px;
+    margin: 20px auto 0px;
+    border-radius: 7px;
+    font-size: 20px;
+    color: #fff;
+    background-color: #000;
+    cursor: pointer; }
+    .form__task button:hover {
+      background-color: #414141; }
+
+input {
+  width: 33px;
+  height: 33px;
+  margin-right: 10px; }
