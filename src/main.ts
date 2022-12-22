@@ -1,7 +1,5 @@
-const urlLimit10 = 'https://jsonplaceholder.typicode.com/todos?_limit=10';
-const urlAllTasks = 'https://jsonplaceholder.typicode.com/todos';
-
-
+const urlLimit10: string = 'https://jsonplaceholder.typicode.com/todos?_limit=10';
+const urlAllTasks: string = 'https://jsonplaceholder.typicode.com/todos';
 
 class TodoToHTML {
     constructor (
@@ -15,13 +13,13 @@ class TodoToHTML {
     }
 
     renderHTML() {
-        const taskCard = document.querySelector('.task__card');
+        const taskCard: HTMLDivElement = document.querySelector('.task__card');
         taskCard.insertAdjacentHTML('beforeend', `
             <li id="todo${this.id}">
                 <div class="name__task">${this.title}</div>
                 <div class="control__task">
-                    <input onchange="upDate(${this.id})" type="checkbox" ${this.completed && 'checked'}>
-                    <img onclick="delTodo(${this.id})" src="img/close-delete-remove-3-svgrepo-com.svg" alt="delete">
+                    <input onchange="changeStatusTodo(${this.id})" type="checkbox" ${this.completed && 'checked'}>
+                    <img onclick="deleteTodo(${this.id})" src="img/close-delete-remove-3-svgrepo-com.svg" alt="delete">
                 </div>
             </li>
         `);
@@ -30,7 +28,7 @@ class TodoToHTML {
 
 
 //==================================GET======================================//
-function getAllTodos(url: string) {
+function getAllTodo(url: string): Promise<any> {
     return fetch(url).then(response => {
         if(!response.ok) {
             throw new Error('Что-то не так с сервером...');
@@ -40,7 +38,7 @@ function getAllTodos(url: string) {
     });
 }
 
-getAllTodos(urlLimit10)
+getAllTodo(urlLimit10)
     .then(data => {
         data.forEach(({id, completed, title}) => {
             new TodoToHTML(id, completed, title).renderHTML()
@@ -51,15 +49,15 @@ getAllTodos(urlLimit10)
 
 
 //===========================POST===============================//
-const addTodo = document.getElementById('addTodo');
+const addTodoButton: HTMLElement = document.getElementById('addTodo');
 
-addTodo.addEventListener('click', (event) => {
+addTodoButton.addEventListener('click', (event) => {
     event.preventDefault();
-    const input = document.getElementById('todoText') as HTMLInputElement;
+    const input = document.getElementById('todoText') as HTMLInputElement
     const title = input.value;
 
     if(title) {
-        const postTodo = (method: string, url: string) => {
+        const postTodo = (method: string, url: string): Promise<any> => {
             return fetch(url, {
                 method,
                 headers: {
@@ -84,8 +82,7 @@ addTodo.addEventListener('click', (event) => {
 });
 
 //========================DELETE=============================//
-
-function delTodo(id: string) {
+function deleteTodo(id: string): Promise<any> {
     return fetch(`https://jsonplaceholder.typicode.com/todos/${id}`, {
         method: 'DELETE',
         headers: {
@@ -108,8 +105,8 @@ function delTodo(id: string) {
 }
 
 //========================UPDATE================================//
-function upDate(id: string) {
-    const completed = document.querySelector(`#todo${id} input`) as HTMLInputElement
+function changeStatusTodo(id: string): Promise<Response> {
+    const completed: HTMLInputElement = document.querySelector(`#todo${id} input`) 
     if(completed.checked) {
         return fetch(`https://jsonplaceholder.typicode.com/todos/${id}`, {
         method: 'PATCH',
@@ -118,7 +115,6 @@ function upDate(id: string) {
         },
         body: JSON.stringify({completed})
     })
-    
     .then(response => {
         if(!response.ok) {
             throw new Error('Что-то не так с сервером...');
